@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата - AntonMebel</title>
+    <link type="image/x-icon" href="images/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/payment.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="AntonMebel">
+            </a>
+            <a href="index.html" class="slogan">
+                <h1>Вечером - деньги, утром - стулья.</h1>
+            </a>
+        </div>
+        
+        <nav>
+    <ul class="menu">
+        <li style="border-right: 1px solid white;">
+            <a class="ctl_btn" href="index.html">Главная</a>
+        </li>
+        <li class="dropdown" style="border-right: 1px solid white;">
+            <a class="ctl_btn dropdown-toggle" href="catalog.html">Каталог</a>
+            <ul class="dropdown-menu">
+                <li><a href="catalog.html?category=chairs">Стулья</a></li>
+                <li><a href="catalog.html?category=tables">Столы</a></li>
+                <li><a href="catalog.html?category=sofas">Диваны</a></li>
+                <li><a href="catalog.html?category=armchairs">Кресла</a></li>
+                <li><a href="catalog.html?category=wardrobes">Шкафы</a></li>
+                <li><a href="catalog.html?category=chests">Комоды</a></li>
+            </ul>
+        </li>
+        <li style="border-right: 1px solid white;">
+            <a class="ctl_btn" href="aboutCompany.html">О компании</a>
+        </li>
+        <li style="border-right: 1px solid white;">
+            <a class="ctl_btn" href="payment.html">Оплата</a>
+        </li>
+        <li>
+            <a class="ctl_btn" href="#" onclick="showCartModal(); return false;">Корзина (<span id="cart-count">0</span>)</a>
+        </li>
+    </ul>
+</nav>
+    </header>
+    
+    <div class="main-content">
+        <main class="payment-page">
+            <h2>Способы оплаты</h2>
+            
+            <div class="payment-info">
+                <p>Мы предлагаем удобные и безопасные способы оплаты для вашего комфорта. Все платежи защищены современными системами безопасности.</p>
+            </div>
+
+            <div class="payment-benefits">
+                <div class="payment-benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Мгновенная оплата</h4>
+                    <p>Подтверждение платежа происходит моментально</p>
+                </div>
+                <div class="payment-benefit">
+                    <div class="benefit-icon">🛡️</div>
+                    <h4>Полная безопасность</h4>
+                    <p>Все данные защищены по стандарту PCI DSS</p>
+                </div>
+                <div class="payment-benefit">
+                    <div class="benefit-icon">💎</div>
+                    <h4>Без комиссии</h4>
+                    <p>Мы не берем дополнительных комиссий за оплату</p>
+                </div>
+                <div class="payment-benefit">
+                    <div class="benefit-icon">🔄</div>
+                    <h4>Возврат средств</h4>
+                    <p>Простой и быстрый возврат в случае необходимости</p>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <h3><span class="payment-icon">💳</span> Банковской картой онлайн</h3>
+                    <p>Оплата картами Visa, MasterCard, МИР через защищенный платежный шлюз.</p>
+                    <ul>
+                        <li>Мгновенное подтверждение оплаты</li>
+                        <li>Защита 3D-Secure</li>
+                        <li>Без комиссии</li>
+                        <li>Круглосуточная поддержка</li>
+                    </ul>
+                </div>
+
+                <div class="payment-method">
+                    <h3><span class="payment-icon">📱</span> Через СБП</h3>
+                    <p>Оплата через мобильное приложение вашего банка по QR-коду или номеру телефона.</p>
+                    <ul>
+                        <li>Мгновенный перевод</li>
+                        <li>Максимальная безопасность</li>
+                        <li>Круглосуточно</li>
+                        <li>Поддержка всех крупных банков</li>
+                    </ul>
+                </div>
+
+                <div class="payment-method">
+                    <h3><span class="payment-icon">🛋️</span> При получении</h3>
+                    <p>Наличными или картой при получении товара курьеру.</p>
+                    <ul>
+                        <li>Осмотрите товар перед оплатой</li>
+                        <li>Оплата наличными или картой</li>
+                        <li>Полная проверка товара</li>
+                        <li>Отсутствие рисков</li>
+                    </ul>
+                </div>
+
+                <div class="payment-method">
+                    <h3><span class="payment-icon">🧾</span> В рассрочку</h3>
+                    <p>Рассрочка от банков-партнеров на 6-12 месяцев.</p>
+                    <ul>
+                        <li>Без первоначального взноса</li>
+                        <li>Оформление онлайн</li>
+                        <li>Решение за 5 минут</li>
+                        <li>Гибкие условия</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="payment-security">
+                <h3><span class="payment-icon">🛡️</span> Гарантия безопасности</h3>
+                <p>Все онлайн-платежи защищены современными технологиями шифрования. Мы сотрудничаем только с проверенными платежными системами, соответствующими международным стандартам безопасности PCI DSS. Ваши данные надежно защищены.</p>
+            </div>
+
+            <div class="contact-support">
+                <h3>Нужна помощь с оплатой?</h3>
+                <p>Наши специалисты всегда готовы помочь вам с выбором способа оплаты и ответить на все вопросы</p>
+                <div class="phone">+7 995-660-21-48</div>
+                <p>Или напишите нам: <a href="mailto:support@antonmebel.ru" class="email">support@antonmebel.ru</a></p>
+            </div>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="upper">
+            <p>&#9742; +7 995-660-21-48 &emsp;&emsp; &#127960; г. Дегтярск, ул. Калинина, 66.</p>
+        </div>
+        <div class="middle_one">
+            <p>Мы обеспечиваем финансовую безопасность при совершении покупок на сайте, благодаря использованию технологии платежной системы МИР, которая защищает Вас от кражи персональных данных при совершении онлайн-платежей.</p>
+        </div>
+        <div class="middle_two">
+            <img src="https://cdn.nadommebel.com/images/pay/halva.svg?17188609864090" alt="Рассрочка Халва">
+            <img src="https://cdn.nadommebel.com/images/pay/mir.svg?16967117231172" alt="МИР">
+            <img src="https://cdn.nadommebel.com/images/pay/sbp.svg?169671172319758" alt="СБП">
+        </div>
+        <div class="lower">
+            <p>2012 - 2025 © AntonMebel - онлайн минимаркет мебели</p>
+            <a href="https://www.nadommebel.com/include/privacy.php?clear_cache=Y">Политика обработки персональных данных</a>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>

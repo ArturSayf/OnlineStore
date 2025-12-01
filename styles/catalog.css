@@ -1,0 +1,541 @@
+/* Стили для страницы каталога */
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.catalog-header h2 {
+    color: #0a4788;
+    font-family: Tahoma;
+    margin: 0;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    padding: 10px 15px;
+    border: 2px solid #0a4788;
+    border-radius: 5px;
+    font-family: Tahoma;
+    font-size: 16px;
+    min-width: 250px;
+}
+
+.search-box button {
+    background: #0a4788;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Tahoma;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+    background: #0c54a1;
+}
+
+/* Сетка товаров */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.05);
+}
+
+.product-card h3 {
+    color: #0a4788;
+    margin: 15px 0 10px 0;
+    font-family: Tahoma;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0a4788;
+    margin: 15px 0;
+}
+
+.product-card .add-to-cart-btn {
+    background: #0a4788;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+}
+
+.product-card .add-to-cart-btn:hover {
+    background: #0c54a1;
+    transform: translateY(-2px);
+}
+
+/* Модальное окно товара */
+.product-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+.product-modal-content {
+    background-color: white;
+    margin: 3% auto;
+    padding: 35px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+}
+
+.product-modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #888;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.product-modal-close:hover {
+    color: #0a4788;
+    background: #f0f0f0;
+}
+
+.product-modal-body {
+    display: flex;
+    gap: 35px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+.product-modal-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-modal-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.product-modal-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-modal-info h2 {
+    color: #0a4788;
+    margin-bottom: 20px;
+    font-size: 28px;
+    border-bottom: 3px solid #0a4788;
+    padding-bottom: 10px;
+}
+
+.product-modal-info > p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.product-modal-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0a4788;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product-specs {
+    margin: 25px 0;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.product-specs h4 {
+    color: #0a4788;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #0a4788;
+    padding-bottom: 8px;
+}
+
+.product-specs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-specs li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-specs li:last-child {
+    border-bottom: none;
+}
+
+.product-specs li strong {
+    color: #333;
+    min-width: 120px;
+}
+
+.product-modal-info .add-to-cart-btn {
+    background: #0a4788;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Tahoma;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.product-modal-info .add-to-cart-btn:hover {
+    background: #0c54a1;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(10, 71, 136, 0.3);
+}
+
+/* Сообщение о пустом результате */
+.empty-catalog {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.empty-catalog h3 {
+    color: #0a4788;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.empty-catalog p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Фильтры категорий */
+.category-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.category-filter-btn {
+    background: white;
+    color: #0a4788;
+    border: 2px solid #0a4788;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.category-filter-btn:hover {
+    background: #0a4788;
+    color: white;
+}
+
+.category-filter-btn.active {
+    background: #0a4788;
+    color: white;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .product-modal-body {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .product-modal-image,
+    .product-modal-info {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .search-box input {
+        min-width: auto;
+        flex: 1;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .product-modal-content {
+        margin: 5% auto;
+        padding: 25px;
+        width: 95%;
+    }
+    
+    .product-card {
+        padding: 15px;
+    }
+    
+    .product-card h3 {
+        font-size: 16px;
+        min-height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-modal-content {
+        padding: 20px;
+        margin: 10% auto;
+    }
+    
+    .product-modal-body {
+        gap: 20px;
+    }
+    
+    .category-filters {
+        justify-content: center;
+    }
+    
+    .category-filter-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+/* Стили для подсказок с характеристиками */
+.product-tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 71, 136);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+}
+
+.product-card:hover .product-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.product-tooltip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.product-tooltip li {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+}
+
+.product-tooltip li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.product-tooltip strong {
+    color: orange;
+    min-width: 100px;
+}
+
+/* Обновленные стили для карточек товаров */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: #f8f9fa;
+    padding: 10px;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card h3 {
+    color: #0a4788;
+    margin: 15px 0 10px 0;
+    font-family: Tahoma;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.3;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0a4788;
+    margin: 10px 0;
+}
+
+.product-card .add-to-cart-btn {
+    background: #0a4788;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-card .add-to-cart-btn:hover {
+    background: #0c54a1;
+    transform: translateY(-2px);
+}

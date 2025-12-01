@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntonMebel - Главная</title>
+    <link type="image/x-icon" href="images/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="AntonMebel">
+            </a>
+            <a href="index.html" class="slogan">
+                <h1>Вечером - деньги, утром - стулья.</h1>
+            </a>
+        </div>
+        
+        <nav>
+    <ul class="menu">
+        <li style="border-right: 1px solid white;">
+            <a class="ctl_btn" href="index.html">Главная</a>
+        </li>
+        <li class="dropdown" style="border-right: 1px solid white;">
+            <a class="ctl_btn dropdown-toggle" href="catalog.html">Каталог</a>
+            <ul class="dropdown-menu">
+                <li><a href="catalog.html?category=chairs">Стулья</a></li>
+                <li><a href="catalog.html?category=tables">Столы</a></li>
+                <li><a href="catalog.html?category=sofas">Диваны</a></li>
+                <li><a href="catalog.html?category=armchairs">Кресла</a></li>
+                <li><a href="catalog.html?category=wardrobes">Шкафы</a></li>
+                <li><a href="catalog.html?category=chests">Комоды</a></li>
+            </ul>
+        </li>
+        <li style="border-right: 1px solid white;">
+            <a class="ctl_btn" href="aboutCompany.html">О компании</a>
+        </li>
+        <li style="border-right: 1px solid white;">
+            <a class="ctl_btn" href="payment.html">Оплата</a>
+        </li>
+        <li>
+            <a class="ctl_btn" href="#" onclick="showCartModal(); return false;">Корзина (<span id="cart-count">0</span>)</a>
+        </li>
+    </ul>
+</nav>
+    </header>
+    
+    <div class="main-content">
+        <main>
+<section class="promo-section">
+    <h2>🔥 Акции дня</h2>
+    <div class="promo-grid" id="promo-products">
+    </div>
+</section>
+
+<section class="daily-deals">
+    <h2>⭐ Товары дня</h2>
+    <div class="deals-grid" id="deals-products">
+    </div>
+</section>
+
+            <!-- Популярные категории -->
+            <section class="categories">
+                <h2>📦 Популярные категории</h2>
+                <div class="categories-grid">
+                    <a href="catalog.html?category=chairs" class="category-card">
+                        <span>Стулья</span>
+                    </a>
+                    <a href="catalog.html?category=sofas" class="category-card">
+                        <span>Диваны</span>
+                    </a>
+                    <a href="catalog.html?category=tables" class="category-card">
+                        <span>Столы</span>
+                    </a>
+                    <a href="catalog.html?category=wardrobes" class="category-card">
+                        <span>Шкафы</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="upper">
+            <p>&#9742; +7 995-660-21-48 &emsp;&emsp; &#127960; г. Дегтярск, ул. Калинина, 66.</p>
+        </div>
+        <div class="middle_one">
+            <p>Мы обеспечиваем финансовую безопасность при совершении покупок на сайте, благодаря использованию технологии платежной системы МИР, которая защищает Вас от кражи персональных данных при совершении онлайн-платежей.</p>
+        </div>
+        <div class="middle_two">
+            <img src="https://cdn.nadommebel.com/images/pay/halva.svg?17188609864090" alt="Рассрочка Халва">
+            <img src="https://cdn.nadommebel.com/images/pay/mir.svg?16967117231172" alt="МИР">
+            <img src="https://cdn.nadommebel.com/images/pay/sbp.svg?169671172319758" alt="СБП">
+        </div>
+        <div class="lower">
+            <p>2012 - 2025 © AntonMebel - онлайн минимаркет мебели</p>
+            <a href="https://www.nadommebel.com/include/privacy.php?clear_cache=Y">Политика обработки персональных данных</a>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/common.js"></script>
+<script>
+    // Загрузка товаров на главной странице
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Загружаем данные товаров
+        const response = await fetch('products.json');
+        const data = await response.json();
+        const products = data.products;
+
+        // Функция для отображения товаров на главной
+        function displayProductsOnHomepage() {
+            const promoContainer = document.getElementById('promo-products');
+            const dealsContainer = document.getElementById('deals-products');
+
+            if (promoContainer) {
+                // Берем первые 3 товара для акций
+                const promoProducts = products.slice(0, 3);
+                promoContainer.innerHTML = promoProducts.map(product => `
+                    <div class="promo-item">
+                        <div class="discount-badge">-${Math.floor(Math.random() * 20) + 10}%</div>
+                        <div class="image-container">
+                            <img src="${product.image}" alt="${product.name}">
+                            ${createTooltipHTML(product)}
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p class="old-price">${Math.round(parseFloat(product.price.replace(/[^\d]/g, '')) * 1.3).toLocaleString()} ₽</p>
+                        <p class="new-price">${product.price}</p>
+                        <button class="add-to-cart-btn" data-id="${product.id}">В корзину</button>
+                    </div>
+                `).join('');
+            }
+
+            if (dealsContainer) {
+                // Берем следующие 4 товара для товаров дня
+                const dealsProducts = products.slice(3, 7);
+                dealsContainer.innerHTML = dealsProducts.map(product => `
+                    <div class="deal-item">
+                        <div class="image-container">
+                            <img src="${product.image}" alt="${product.name}">
+                            ${createTooltipHTML(product)}
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p class="price">${product.price}</p>
+                        <button class="add-to-cart-btn" data-id="${product.id}">В корзину</button>
+                    </div>
+                `).join('');
+            }
+
+            // Добавляем обработчики для кнопок корзины
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
+                        addToCart({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            image: product.image,
+                            quantity: 1
+                        });
+                        showNotification('Товар добавлен в корзину!');
+                    }
+                });
+            });
+        }
+
+        // Функция создания HTML для подсказки (такая же как в catalog.js)
+        function createTooltipHTML(product) {
+            let specsHTML = '';
+            for (const [key, value] of Object.entries(product.specs)) {
+                specsHTML += `<li><strong>${key}:</strong> ${value}</li>`;
+            }
+            
+            return `
+                <div class="product-tooltip">
+                    <ul>${specsHTML}</ul>
+                </div>
+            `;
+        }
+
+        displayProductsOnHomepage();
+    });
+</script>
+
+    <script>
+        // Инициализация корзины
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            
+            // Обработчики для кнопок добавления в корзину
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const productName = this.parentElement.querySelector('h3').textContent;
+                    const productPrice = this.parentElement.querySelector('.price, .new-price').textContent;
+                    const productImage = this.parentElement.querySelector('img').src;
+                    
+                    addToCart({
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: 1
+                    });
+                    
+                    showNotification('Товар добавлен в корзину!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
